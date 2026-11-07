@@ -1,0 +1,12 @@
+{
+  "name": "taskboard",
+  "private": true,
+  "description": "Task and project management beta",
+  "scripts": {
+    "start": "node src/main.js",
+    "test": "node --test tests/domain/rules.test.js tests/application/services.test.js"
+  },
+  "dependencies": {
+    "mongodb": "^7.8.0"
+  }
+}

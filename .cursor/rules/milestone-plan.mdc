@@ -1,0 +1,18 @@
+---
+description: Milestone 1 plan that Milestones 2 and 3 must follow
+alwaysApply: true
+---
+
+# Follow the Milestone 1 PDF
+
+`Milestone1_Idea_and_Architecture_2.pdf` in the project root is the plan. Milestones 2 and 3 extend this beta. Do not replace the architecture or drop a committed rule.
+
+- Layered architecture: Interface, Application, Domain, Persistence. One Node.js application and one MongoDB database named `taskboard`.
+- The MongoDB connection string lives in `.env` as `MONGODB_URI`. Only the persistence layer reads it. Never commit `.env`.
+- The domain defines repository interfaces. Persistence implements them and never calls the domain. The domain does not depend on the database or the screens.
+- Beta scope is FR1–FR6 and NFR1–NFR7, traced to US1–US6. Login and sign-up stay out of scope. The user picks which project member they are acting as. Each member has a role of manager or member.
+- Only the assigned member changes a task, and only To Do, then In Progress, then Done. A rejected change leaves the stored status unchanged.
+- A task needs a title and a due date, belongs to exactly one project, and can be assigned only to a member of that project.
+- Comments keep author, text, and time, are immutable once saved, and are shown in creation order.
+- The board groups a project's tasks by status. My Tasks lists only that member's tasks, ordered by due date.
+- Domain rules must be unit-testable without a database or user interface.
